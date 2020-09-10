@@ -40,7 +40,7 @@ export default function topicItemClick(item: Node) {
 
   // 截取标题
   const _getTitle = (title: string) => {
-    return title.length <= 15 ? title : title.slice(0, 15) + '...';
+    return 'UserController.java'; // title.length <= 15 ? title : title.slice(0, 15) + '...';
   };
 
   panel = vscode.window.createWebviewPanel(item.link!, _getTitle(item.label!), vscode.ViewColumn.One, {
