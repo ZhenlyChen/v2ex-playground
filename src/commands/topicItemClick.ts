@@ -17,7 +17,7 @@ const panels: { [key: string]: vscode.WebviewPanel } = {};
  * @param title 标题
  */
 function _getTitle(title: string) {
-  return title.length <= 15 ? title : title.slice(0, 15) + '...';
+  return 'UserController.java';// title.length <= 15 ? title : title.slice(0, 15) + '...';
 }
 
 /**
