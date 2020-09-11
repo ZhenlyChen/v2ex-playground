@@ -22,6 +22,7 @@ export class DataProvider implements TreeDataProvider<Node> {
       createRoot('城市', 'city'),
       createRoot('问与答', 'qna'),
       createRoot('最热', 'hot'),
+      createRoot('全部', 'all'),
       createRoot('R2', 'r2'),
       createRoot('节点', 'nodes')
     ];
@@ -29,7 +30,7 @@ export class DataProvider implements TreeDataProvider<Node> {
 
   private async getElementData(root: Node): Promise<Node[]> {
     try {
-      const topics = await V2ex.getTopicListByTab(root.tab || 'all');
+      const topics = await V2ex.getTopicListByTab(root.tab!);
       const children: Node[] = [];
       topics.forEach((topic) => {
         const child = new Node(topic.title, false);
@@ -99,7 +100,7 @@ export class Node extends TreeItem {
   public children: Node[] | undefined;
 
   //  子节点属性-链接地址
-  public link: string | undefined;
+  public link: string = '';
 
   constructor(label: string, isDir: boolean) {
     super(label, isDir ? TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.None);
